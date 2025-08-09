@@ -2,11 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const { OpenAI } = require('openai');
 const path = require('path');
+const cors = require('cors'); // <--- Ligne ajoutée pour CORS
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors()); // <--- Ligne ajoutée pour activer CORS
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
